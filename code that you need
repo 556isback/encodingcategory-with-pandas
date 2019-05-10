@@ -1,0 +1,10 @@
+# just copy these two functions to your project ,and pass the serial to  vectorizecategory(), and it will return a vectorized DataFrame. 
+def vectorizecategory(serial):
+    names=list(set(serial))
+    a=list(serial.apply(vector,names=list(set(serial))))
+    df=pd.DataFrame(a,columns=names)
+    return df
+def vector(x,names):
+    a=[0]*(len(names))
+    a[names.index(x)]=1
+    return a
