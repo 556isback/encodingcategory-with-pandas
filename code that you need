@@ -1,4 +1,5 @@
-# just copy these two functions to your project ,and pass the serial to  vectorizecategory(), and it will return a vectorized DataFrame. 
+# just copy these three functions to your project ,and pass the DataFrame and the names of the columns that you1 want to performe onehot 
+encode to  encoder(), and it will return a encoded DataFrame. 
 def vectorizecategory(serial):
     names=list(set(serial))
     columns_num=len(names)
@@ -9,3 +10,9 @@ def vector(x,num,names):
     a=[0]*(num)
     a[names.index(x)]=1
     return a
+def encoder (catfea,df):
+    for i in catfea:
+        df1=vectorizecategory(df[i])
+        df=df.drop([i],1).merge(df1,right_index=True,left_index=True)
+        print (i)
+    return df
